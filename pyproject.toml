@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "tap-clickcast"
+version = "0.2.0"
+description = "`tap-clickcast` is a Singer tap for clickcast, built with the Meltano SDK for Singer Taps."
+authors = ["Datateer"]
+license = "Apache 2.0"
+
+[tool.poetry.dependencies]
+python = "<3.9,>=3.6.1"
+requests = "^2.25.1"
+singer-sdk = "^0.3.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.1.2"
+pytest-watch = "^4.2.0"
+coverage = {extras = ["toml"], version = "^5.5"}
+black = { version = "*", allow-prereleases = true }
+flake8 = "^3.9.2"
+flake8-bugbear = "^21.4.3"
+requests-mock = "^1.9.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+# CLI declaration
+tap-clickcast = 'tap_clickcast.tap:TapClickcast.cli'
+
+[tool.semantic_release]
+version_variable = [
+    # "dr_sven/__init__.py:__version__",
+    "pyproject.toml:version"
+]
+branch = "main"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
+
+[tool.coverage.run]
+omit = [".*", "*/site-packages/*"]
+
+[tool.coverage.report]
+fail_under = 95

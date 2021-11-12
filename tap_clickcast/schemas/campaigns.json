@@ -1,0 +1,397 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "$id": "/campaigns.json",
+  "type": "object",
+  "properties": {
+    "campaign_id": {
+      "type": [
+        "integer"
+      ]
+    },
+    "campaign_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enterprise_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "enterprise_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "employer_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "employer_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priority": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "budget_jobs": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "budget_rundate": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "budget_monthly": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "budget_weekly": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "bid_model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "is_all_other": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "categories": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "category_names": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "companies": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "company_names": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "city_states": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "city_state_names": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "states": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "state_names": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "req_numbers": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "keywords": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "grab_unsponsored": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "max_applies": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "max_applies_is_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "max_paid_applies": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "max_paid_applies_is_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "max_clicks": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "max_clicks_is_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "max_paid_clicks": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "max_paid_clicks_is_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "max_apply_starts": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "max_apply_starts_is_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "max_paid_apply_starts": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "max_paid_apply_starts_is_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "reset_budget_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sponsor_in_campaign": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sponsor_month_start": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sponsor_on_create": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "activate_on": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "paused_after": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "slot_first_priority": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "slot_second_priority": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "slot_jobs_count": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "budget_progress_lifetime": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "budget_progress_mtd": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "rule_job_age": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "rule_job_age_newer": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "rule_few_applications_str": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rule_high_conversion_str": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rule_poor_converter_str": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rules_export": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "rules_export_str": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cpa_goal": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "daily_paid_apply_goal": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "parent_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "parent_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "employer_labor_order_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "labor_order_node": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labor_order_sites": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "labor_order_job_req_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labor_order_exported": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

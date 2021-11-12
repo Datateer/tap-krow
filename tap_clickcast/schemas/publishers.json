@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "$id": "/publishers.json",
+  "type": "object",
+  "properties": {
+    "publisher_id": {
+      "type": [
+        "integer"
+      ]
+    },
+    "publisher_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enterprise_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "enterprise_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "group": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "master_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cpa_minimum": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "cpc_minimum": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "is_optimizer_eligible": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_appcast_exchange": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "is_private_exchange": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "name_simple": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "exchange_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "employers_with_access": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "show_apply_data": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "currency_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currency_symbol": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url_sponsored": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url_organic": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url_blended": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "users": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "timezone": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_root": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_entry": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_location": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_city": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_country": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_zip": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_job_reference": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_mobile_friendly_apply": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_job_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_posted_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_company": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_cpa": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_cpc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_category": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_appcast_category": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_html_jobs": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_date_format": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_view_pixel": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_req_number": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_campaign_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_config_campaign_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

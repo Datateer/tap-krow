@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "$id": "/jobstats.json",
+  "type": "object",
+  "properties": {
+    "job_id": {
+      "type": [
+        "integer"
+      ]
+    },
+    "employer_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "campaign_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "campaign_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publisher_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "publisher_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "start_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "end_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_reference": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applies": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "apply_starts": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "average_apply_time": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "clicks": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "cpa": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "cpc": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "cr": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "spend": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "currency": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "device": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "company": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_date_posted": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "age": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_location": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_req_number": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_views": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "impressions": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "applies_paid": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "applies_organic": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "applies_unpaid": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "applies_total": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "clicks_paid": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "clicks_organic": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "clicks_unpaid": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "hired": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "qualified": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "resumes": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "job_category": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_city": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_country": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_postal_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parent_job_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

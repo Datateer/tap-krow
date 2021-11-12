@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft-04/schema",
+  "$id": "/employers.json",
+  "type": "object",
+  "properties": {
+    "employer_id": {
+      "type": [
+        "integer"
+      ]
+    },
+    "employer_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enterprise_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "enterprise_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "agency_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "agency_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "api_managed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "ats": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "budget_monthly": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "campaign_budget_monthly": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "campaign_budget_notification": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "campaign_budget_weekly": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "campaign_job_budget": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "campaign_max_applies": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "campaign_max_paid_applies": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "campaign_max_apply_starts": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "campaign_max_clicks": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "campaign_max_paid_clicks": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "campaign_reset_job_budget": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "campaign_sponsor_jobs_in_campaign": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "campaign_sponsor_jobs_monthly": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "campaign_sponsor_jobs_on_create": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "currency_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currency_symbol": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_cpa_override": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_cpc_override": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "indeed_bid_optimizer": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "min_cpa": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "net_cost_coef": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "timezone": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "feed_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "max_distance_for_geoclose": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "external_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "external_ids": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "feed_format": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "job_api_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "job_expansions_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "quality_enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "active_connection_indeed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "active_connection_zip": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "active_connection_craigslist": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "contract_expiration": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sales_manager": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "account_manager": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "account_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "job_board_rebate": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "appcast_fee": {
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}
