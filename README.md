@@ -1,13 +1,15 @@
-# tap-clickcast
+# tap-krow
 
-`tap-clickcast` is a Singer tap for AppCast's Clickcast API.
+`tap-krow` is a Singer tap for the KROW API.
 
-Built with the Meltano [SDK](https://gitlab.com/meltano/sdk) for Singer Taps. More information about Clickcast API can be found at https://api.clickcast.cloud/clickcast/home#/
+Built with the Meltano [SDK](https://gitlab.com/meltano/sdk) for Singer Taps.
+
+Entity relationship diagram is available at https://dbdiagram.io/d/60b954d1b29a09603d17e3b3
 
 ## Installation
 
 ```bash
-pipx install tap-clickcast
+pipx install tap-krow
 ```
 
 ## Configuration
@@ -18,28 +20,28 @@ A full list of supported settings and capabilities for this
 tap is available by running:
 
 ```bash
-tap-clickcast --about
+tap-krow --about
 ```
 
-partner_token
-: The Clickcast API Partner Token. This value is used to authenticate with the API by passing it to the header `X-Partner-Token`
+api_key
+: The KROW API key. This value is used to authenticate with the API by passing it to the header `Authentication: Bearer <api_key>`
 api_url_base
-: The Clickcast API base URL. Defaults to https://api.clickcast.cloud/clickcast/api
+: The KROW API base URL. Defaults to https://industry-staging.herokuapp.com/v1
 
 ### Source Authentication and Authorization
 
-You can generate a Partner Token at https://api.clickcast.cloud/clickcast/home#/tokens
+You can get an API key by contacting KROW
 
 ## Usage
 
-You can easily run `tap-clickcast` by itself or in a pipeline using [Meltano](www.meltano.com).
+You can easily run `tap-krow` by itself or in a pipeline using [Meltano](www.meltano.com).
 
 ### Executing the Tap Directly
 
 ```bash
-tap-clickcast --version
-tap-clickcast --help
-tap-clickcast --config CONFIG --discover > ./catalog.json
+tap-krow --version
+tap-krow --help
+tap-krow --config CONFIG --discover > ./catalog.json
 ```
 
 ## Developer Resources
@@ -53,25 +55,25 @@ poetry install
 
 ### Create and Run Tests
 
-Create tests within the `tap_clickcast/tests` subfolder and
+Create tests within the `tap_krow/tests` subfolder and
 then run:
 
 ```bash
 poetry run pytest
 ```
 
-You can also test the `tap-clickcast` CLI interface directly using `poetry run`:
+You can also test the `tap-krow` CLI interface directly using `poetry run`:
 
 ```bash
-poetry run tap-clickcast --help
+poetry run tap-krow --help
 ```
 
 ### Manual test run
 
-Create a config file that contains a `partner_token` property, then run
+Create a config file that contains a `api_key` property, then run
 
 ```bash
-poetry run tap-clickcast --config config.json
+poetry run tap-krow --config config.json
 ```
 
 ### Release new version
@@ -80,7 +82,7 @@ Workflows in the `.github` will create a new version number using Semantic Relea
 
 Any commit that starts with `feat: ...` will create a new minor version (and any comment that starts with `fix: ...` will create a new minor version) when the commit is finally merged to main after a PR is approved and merged.
 
-Then the new version is published to PyPI, available at [https://pypi.org/project/tap-clickcast/]().
+Then the new version is published to PyPI, available at [https://pypi.org/project/tap-krow/]().
 
 ### Testing with [Meltano](https://www.meltano.com)
 
@@ -96,7 +98,7 @@ Next, install Meltano (if you haven't already) and any needed plugins:
 # Install meltano
 pipx install meltano
 # Initialize meltano within this directory
-cd tap-clickcast
+cd tap-krow
 meltano install
 ```
 
@@ -104,9 +106,9 @@ Now you can test and orchestrate using Meltano:
 
 ```bash
 # Test invocation:
-meltano invoke tap-clickcast --version
+meltano invoke tap-krow --version
 # OR run a test `elt` pipeline:
-meltano elt tap-clickcast target-jsonl
+meltano elt tap-krow target-jsonl
 ```
 
 ### SDK Dev Guide

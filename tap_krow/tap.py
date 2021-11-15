@@ -1,26 +1,27 @@
-"""clickcast tap class."""
+"""krow tap class."""
 
 from typing import List
 
 from singer_sdk import Tap, Stream
 from singer_sdk import typing as th  # JSON schema typing helpers
 
-from tap_clickcast.streams import CampaignsStream, EmployersStream, JobsStream, JobStatsStream
+from tap_krow.streams import OrganizationsStream
 
-STREAM_TYPES = [CampaignsStream, EmployersStream, JobsStream, JobStatsStream]
+# STREAM_TYPES = [CampaignsStream, EmployersStream, JobsStream, JobStatsStream]
+STREAM_TYPES = [OrganizationsStream]
 
 
-class TapClickcast(Tap):
-    """clickcast tap class."""
+class TapKrow(Tap):
+    """krow tap class."""
 
-    name = "tap-clickcast"
+    name = "tap-krow"
 
     config_jsonschema = th.PropertiesList(
-        th.Property("partner_token", th.StringType, required=True),
+        th.Property("api_key", th.StringType, required=True),
         th.Property(
             "api_url_base",
             th.StringType,
-            default="https://api.clickcast.cloud/clickcast/api",
+            default="https://industry-staging.herokuapp.com/v1",
         ),
     ).to_dict()
 

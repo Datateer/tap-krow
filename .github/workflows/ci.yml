@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 env:
-  TAP_CLICKCAST_PARTNER_TOKEN: ${{ secrets.TAP_CLICKCAST_PARTNER_TOKEN }}
+  TAP_KROW_API_KEY: ${{ secrets.TAP_KROW_API_KEY }}
 
 jobs:
   Quality:
