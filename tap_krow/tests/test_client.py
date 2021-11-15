@@ -1,7 +1,6 @@
 """Tests standard tap features using the built-in SDK tests library."""
 
 import json
-import requests_mock
 import pytest
 
 from tap_krow.streams import OrganizationsStream

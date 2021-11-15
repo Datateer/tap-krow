@@ -1,10 +1,9 @@
 """REST client handling, including krowStream base class."""
 
-import backoff
 import re
 import requests
 from pathlib import Path
-from typing import Any, Dict, Optional, Iterable, cast
+from typing import Any, Dict, Optional, Iterable
 
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
@@ -22,7 +21,7 @@ class KrowStream(RESTStream):
         """Return the API URL root, configurable via tap settings."""
         return self.config["api_url_base"]
 
-    is_sorted = True  # ref https://sdk.meltano.com/en/latest/implementation/state.html?highlight=incremental#the-impact-of-sorting-on-incremental-sync
+    is_sorted = True
     records_jsonpath = "$.data[*]"  # "$[*]"  # Or override `parse_response`.
     current_page_jsonpath = "$.meta."
     next_page_url_jsonpath = "$.links.next"
@@ -42,7 +41,7 @@ class KrowStream(RESTStream):
         next_page_token = None
         next_page_url = self.get_next_page_url(response)
         if next_page_url:
-            search = re.search("page%5Bnumber%5D=(\d+)", next_page_url)
+            search = re.search("page%5Bnumber%5D=(\\d+)", next_page_url)
             if search:
                 next_page_token = int(search.group(1))
 

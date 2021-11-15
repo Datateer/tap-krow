@@ -3,11 +3,7 @@ from pathlib import Path
 from typing import Optional
 
 from singer_sdk.typing import (
-    ArrayType,
-    BooleanType,
     DateTimeType,
-    IntegerType,
-    NumberType,
     ObjectType,
     PropertiesList,
     Property,
