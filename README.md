@@ -102,6 +102,12 @@ cd tap-krow
 meltano install
 ```
 
+Create a file `.env` with the contents:
+
+```
+export TAP_KROW_API_KEY=<api_key value here>
+```
+
 Now you can test and orchestrate using Meltano:
 
 ```bash

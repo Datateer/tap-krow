@@ -16,25 +16,20 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 
 class OrganizationsStream(KrowStream):
-    name = "Organizations"
+    name = "organizations"
     path = "/organizations"
     # schema_filepath = SCHEMAS_DIR / "organizations.json"
     primary_keys = ["id"]
     schema = PropertiesList(
         Property("id", StringType, required=True),
-        Property(
-            "attributes",
-            ObjectType(
-                Property("name", StringType),
-                Property("created_at", DateTimeType),
-                Property("updated_at", DateTimeType, required=True),
-            ),
-        ),
+        Property("name", StringType),
+        Property("created_at", DateTimeType),
+        Property("updated_at", DateTimeType, required=True),
     ).to_dict()
 
-    def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-        """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
-        return {"organization_id": record["id"]}
+    # def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
+    #     """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
+    #     return {"organization_id": record["id"]}
 
 
 # class EmployersStream(KrowStream):
