@@ -98,14 +98,15 @@ def test_get_next_page_url_returns_null_if_on_last_page(stream):
 
 
 def test_get_url_params_includes_page_number(stream):
-    next_page_token = 33
+    next_page_token = {"current_page": 33}
     actual = stream.get_url_params(None, next_page_token)
-    assert next_page_token == actual["page[number]"]
+    assert next_page_token["current_page"] == actual["page[number]"]
 
 
 def test_get_url_params_includes_sort_by_updated_descending(stream):
     sort = "-updated_at"
-    values = stream.get_url_params(None, 33)
+    next_page_token = {"current_page": 33}
+    values = stream.get_url_params(None, next_page_token)
     assert sort == values["sort"]
 
 

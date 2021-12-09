@@ -18,9 +18,12 @@ plugins:
     config:
       api_url_base: https://industry-staging.herokuapp.com/v1
     select:
-    - organizations.id
-    - organizations.name
+    - organizations.*
+    - regions.*
+    - applicants.*
+    - locations.*
+    - positions.*
   loaders:
-    - name: target-jsonl
-      label: JSONL
-      pip_url: target-jsonl
+  - name: target-jsonl
+    label: JSONL
+    pip_url: target-jsonl
