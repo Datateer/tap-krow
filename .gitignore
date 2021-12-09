@@ -4,6 +4,7 @@
 .meltano/
 config.json
 catalog.json
+state.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

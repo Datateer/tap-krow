@@ -1,10 +1,9 @@
 """Stream type classes for tap-krow."""
-from pathlib import Path
 from typing import Optional
 
 from singer_sdk.typing import (
     DateTimeType,
-    ObjectType,
+    NumberType,
     PropertiesList,
     Property,
     StringType,
@@ -12,24 +11,14 @@ from singer_sdk.typing import (
 
 from tap_krow.client import KrowStream
 
-SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
-
 
 class OrganizationsStream(KrowStream):
-    name = "Organizations"
+    name = "organizations"
     path = "/organizations"
-    # schema_filepath = SCHEMAS_DIR / "organizations.json"
-    primary_keys = ["id"]
     schema = PropertiesList(
         Property("id", StringType, required=True),
-        Property(
-            "attributes",
-            ObjectType(
-                Property("name", StringType),
-                Property("created_at", DateTimeType),
-                Property("updated_at", DateTimeType, required=True),
-            ),
-        ),
+        Property("name", StringType),
+        Property("updated_at", DateTimeType, required=True),
     ).to_dict()
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
@@ -37,52 +26,61 @@ class OrganizationsStream(KrowStream):
         return {"organization_id": record["id"]}
 
 
-# class EmployersStream(KrowStream):
-#     name = "employers"
-#     # path = "/employers?employer_id=8583"
-#     path = "/employers"
-#     schema_filepath = SCHEMAS_DIR / "employers.json"
-#     primary_keys = ["employer_id"]
-#     replication_key = None
+class PositionsStream(KrowStream):
+    name = "positions"
+    path = "/organizations/{organization_id}/positions"
+    schema = PropertiesList(
+        Property("id", StringType, required=True),
+        Property("name", StringType),
+        Property("updated_at", DateTimeType, required=True),
+    ).to_dict()
 
-#     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-#         """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
-#         return {"employer_id": record["employer_id"]}
-
-
-# class CampaignsStream(KrowStream):
-#     name = "campaigns"
-#     path = "/campaigns"
-#     # path = "/campaigns?campaign_id=95929"
-#     schema_filepath = SCHEMAS_DIR / "campaigns.json"
-#     primary_keys = ["campaign_id"]
-#     replication_key = None
-
-#     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-#         return {"campaign_id": record["campaign_id"]}
+    parent_stream_type = OrganizationsStream
+    ignore_parent_replication_key = True
 
 
-# class JobStatsStream(KrowStream):
-#     name = "jobstats"
-#     path = "/employer/{employer_id}/job_stats"
-#     schema_filepath = SCHEMAS_DIR / "jobstats.json"
-#     primary_keys = ["job_id"]
-#     replication_key = None
-#     parent_stream_type = EmployersStream
+class RegionsStream(KrowStream):
+    name = "regions"
+    path = "/organizations/{organization_id}/regions"
+    schema = PropertiesList(
+        Property("id", StringType, required=True),
+        Property("name", StringType),
+        Property("updated_at", DateTimeType, required=True),
+    ).to_dict()
+
+    parent_stream_type = OrganizationsStream
+    ignore_parent_replication_key = True
 
 
-# class JobsStream(KrowStream):
-#     name = "jobs"
-#     path = "/campaign/{campaign_id}/jobs"
-#     schema_filepath = SCHEMAS_DIR / "jobs.json"
-#     primary_keys = ["job_id"]
-#     replication_key = None
-#     parent_stream_type = CampaignsStream
+class LocationsStream(KrowStream):
+    name = "locations"
+    path = "/organizations/{organization_id}/locations"
+    schema = PropertiesList(
+        Property("id", StringType, required=True),
+        Property("name", StringType),
+        Property("city", StringType),
+        Property("state", StringType),
+        Property("postal_code", StringType),
+        Property("time_zone", StringType),
+        Property("latitude", NumberType),
+        Property("longitude", NumberType),
+        Property("parent_id", StringType),
+        Property("updated_at", DateTimeType, required=True),
+    ).to_dict()
+
+    parent_stream_type = OrganizationsStream
+    ignore_parent_replication_key = True
 
 
-# class PublishersStream(KrowStream):
-#     name = "publishers"
-#     path = "/publishers"
-#     schema_filepath = SCHEMAS_DIR / "publishers.json"
-#     primary_keys = ["publisher_id"]
-#     replication_key = None
+class ApplicantsStream(KrowStream):
+    name = "applicants"
+    path = "/organizations/{organization_id}/applicants"
+    schema = PropertiesList(
+        Property("id", StringType, required=True),
+        Property("name", StringType),
+        Property("action", StringType),
+        Property("updated_at", DateTimeType, required=True),
+    ).to_dict()
+
+    parent_stream_type = OrganizationsStream
+    ignore_parent_replication_key = True

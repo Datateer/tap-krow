@@ -11,5 +11,5 @@ class krowAuthenticator(SimpleAuthenticator):
     def create_for_stream(cls, stream) -> "krowAuthenticator":
         return cls(
             stream=stream,
-            auth_headers={"Authentication": f'Bearer: {stream.config.get("api_key")}'},
+            auth_headers={"Authorization": f'Bearer {stream.config.get("api_key")}'},
         )

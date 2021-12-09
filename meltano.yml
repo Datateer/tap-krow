@@ -3,7 +3,27 @@ send_anonymous_usage_stats: true
 project_id: 4c59ef72-be67-4ca8-8065-5980c9ff927d
 plugins:
   extractors:
+  - name: tap-krow
+    namespace: tap_krow
+    pip_url: fake
+    executable: /home/adam/dev/tap-krow/tap-krow.sh
+    capabilities:
+    - state
+    - catalog
+    - discover
+    settings:
+    - name: api_key
+      kind: password
+    - name: api_url_base
+    config:
+      api_url_base: https://industry-staging.herokuapp.com/v1
+    select:
+    - organizations.*
+    - regions.*
+    - applicants.*
+    - locations.*
+    - positions.*
   loaders:
   - name: target-jsonl
-    variant: andyh1203
+    label: JSONL
     pip_url: target-jsonl

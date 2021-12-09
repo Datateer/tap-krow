@@ -8,8 +8,8 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  TAP_KROW_API_KEY: ${{ secrets.TAP_KROW_API_KEY }}
+# env:
+#   TAP_KROW_API_KEY: ${{ secrets.TAP_KROW_API_KEY }}
 
 jobs:
   Quality:
@@ -52,6 +52,8 @@ jobs:
       - name: Python Semantic Release
         uses: relekang/python-semantic-release@master
         with:
+          # a special token in github at the organization account level
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          # first must use the Datateer account token, then after first publish can generate a repo-specific token
           pypi_token: ${{ secrets.PYPI_TOKEN }}
 
