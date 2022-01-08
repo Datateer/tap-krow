@@ -18,54 +18,6 @@ def responses(api_responses):
     return api_responses["organizations"]
 
 
-# def build_basic_response(page_count=17, page_size=2):
-#     """Simulate a response from the KROW API
-#     :page_count: Simulate the API returning a certain number of pages, by overriding this value
-#     """
-#     response_string = (
-#         "{"
-#         '  "data": ['
-#         "    {"
-#         '      "id": "ea196757-acbb-4be2-a685-703e8349f443",'
-#         '      "type": "organizations",'
-#         '        "attributes": {'
-#         '            "name": "JS Helwig Testbed",'
-#         '            "status": "pending",'
-#         '            "regions_count": 2,'
-#         '            "regions_count_updated_at": "2021-11-10T21:05:49.085Z",'
-#         '            "created_at": "2021-11-09T21:07:39.828Z",'
-#         '            "updated_at": "2021-11-11T22:42:50.304Z"'
-#         "        }"
-#         "    },"
-#         "    {"
-#         '      "id": "9e48251e-929b-45f8-bcc6-93fb5c753072",'
-#         '      "type": "organizations",'
-#         '      "attributes": {'
-#         '          "name": "Lowe\'s Testbed",'
-#         '          "status": "pending",'
-#         '          "regions_count": 0,'
-#         '          "regions_count_updated_at": null,'
-#         '          "created_at": "2021-11-09T20:49:20.077Z",'
-#         '          "updated_at": "2021-11-10T22:42:50.278Z"'
-#         "      }"
-#         "    }"
-#         "  ],"
-#         '  "meta": {'
-#         '    "pagination": {'
-#         f'     "total": 526,'
-#         f'     "pages": {page_count}'
-#         "    }"
-#         "  },"
-#         '  "links": {'
-#         f'    "self": "/v1/organizations?page%5Bnumber%5D=1&page%5Bsize%5D={page_size}",'
-#         f'    "next": "/v1/organizations?page%5Bnumber%5D=2&page%5Bsize%5D={page_size}",'
-#         '    "prev": null'
-#         "  }"
-#         "}"
-#     )
-#     return FakeResponse(response_string)
-
-
 def test_returns_results(responses, stream, get_parsed_records):
     records = get_parsed_records(stream, responses["orgs_default.json"])
     assert len(records) == 25
