@@ -7,6 +7,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 # env:
 #   TAP_KROW_API_KEY: ${{ secrets.TAP_KROW_API_KEY }}
