@@ -1,0 +1,113 @@
+{
+    "data": [
+        {
+            "id": "7dc2b7b1-ea4c-40be-907f-8269d4469e60",
+            "type": "positions",
+            "attributes": {
+                "description": "Like Jackie Treehorn",
+                "external_id": "999",
+                "name": "Publishing",
+                "status": "synchronized",
+                "rolling_daily_apply_count": 0,
+                "rolling_daily_apply_change": -100.0,
+                "rolling_monthly_apply_count": 3,
+                "rolling_monthly_apply_change": null,
+                "rolling_apply_count_updated_at": "2022-01-08T14:03:07.971Z",
+                "rolling_daily_hire_count": 0,
+                "rolling_daily_hire_change": -100.0,
+                "rolling_monthly_hire_count": 1,
+                "rolling_monthly_hire_change": null,
+                "rolling_hire_count_updated_at": "2022-01-08T14:04:59.903Z",
+                "average_days_to_decision": 5,
+                "average_days_to_decision_updated_at": "2022-01-03T19:33:41.079Z",
+                "transitioning": false,
+                "state_changed_at": "2021-12-30T00:16:50.795Z",
+                "state": {
+                    "action": "configurable",
+                    "name": "configurable"
+                },
+                "transitions": [
+                    {
+                        "action": "on",
+                        "name": "on"
+                    },
+                    {
+                        "action": "off",
+                        "name": "off"
+                    }
+                ],
+                "created_at": "2021-12-28T21:16:56.921Z",
+                "updated_at": "2022-01-08T14:04:59.996Z"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+                        "type": "organizations"
+                    }
+                }
+            }
+        },
+        {
+            "id": "c1e38973-af91-4bcf-bbdf-883bbfc83eb8",
+            "type": "positions",
+            "attributes": {
+                "description": "Like Knox Herrington",
+                "external_id": "101",
+                "name": "Video Artist",
+                "status": "synchronized",
+                "rolling_daily_apply_count": 0,
+                "rolling_daily_apply_change": -100.0,
+                "rolling_monthly_apply_count": 8,
+                "rolling_monthly_apply_change": null,
+                "rolling_apply_count_updated_at": "2022-01-08T14:03:14.243Z",
+                "rolling_daily_hire_count": 0,
+                "rolling_daily_hire_change": -100.0,
+                "rolling_monthly_hire_count": 2,
+                "rolling_monthly_hire_change": null,
+                "rolling_hire_count_updated_at": "2022-01-08T14:05:10.654Z",
+                "average_days_to_decision": 3,
+                "average_days_to_decision_updated_at": "2022-01-05T21:33:29.694Z",
+                "transitioning": false,
+                "state_changed_at": null,
+                "state": {
+                    "action": "on",
+                    "name": "on"
+                },
+                "transitions": [
+                    {
+                        "action": "off",
+                        "name": "off"
+                    },
+                    {
+                        "action": "configurable",
+                        "name": "configurable"
+                    }
+                ],
+                "created_at": "2021-12-21T18:46:01.271Z",
+                "updated_at": "2022-01-08T14:05:10.729Z"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+                        "type": "organizations"
+                    }
+                }
+            }
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "pages": 1
+        }
+    },
+    "links": {
+        "self": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/positions?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "next": null,
+        "prev": null,
+        "first": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/positions?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "last": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/positions?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    }
+}
