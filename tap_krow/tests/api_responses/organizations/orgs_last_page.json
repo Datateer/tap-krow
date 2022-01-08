@@ -1,0 +1,16 @@
+{
+    "data": [],
+    "meta": {
+        "pagination": {
+            "total": 50,
+            "pages": 3
+        }
+    },
+    "links": {
+        "self": "/v1/organizations?page%5Bnumber%5D=3&page%5Bsize%5D=25&sort=updated_at",
+        "next": null,
+        "prev": "/v1/organizations?page%5Bnumber%5D=2&page%5Bsize%5D=25&sort=updated_at",
+        "first": "/v1/organizations?page%5Bnumber%5D=1&page%5Bsize%5D=25&sort=updated_at",
+        "last": "/v1/organizations?page%5Bnumber%5D=3&page%5Bsize%5D=25&sort=updated_at"
+    }
+}

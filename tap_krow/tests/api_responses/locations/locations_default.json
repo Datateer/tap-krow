@@ -1,0 +1,117 @@
+{
+    "data": [
+        {
+            "id": "f8baf54f-380f-4bfe-b597-fe3f5ef74083",
+            "type": "locations",
+            "attributes": {
+                "name": "The Castle Agggggg",
+                "external_id": "",
+                "address": "6020 E 82nd St",
+                "unit": null,
+                "city": "Indianapolis",
+                "state": "IN",
+                "postal_code": "46250",
+                "phone_number": "0000000000",
+                "time_zone": "America/Indiana/Indianapolis",
+                "latitude": 39.9092273,
+                "longitude": -86.065379,
+                "status": "synchronized",
+                "organization_id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+                "parent_id": "abad6260-51a2-4f3e-861f-8f16f7a45532",
+                "location_managers_count": 3,
+                "location_managers_count_updated_at": "2021-12-29T22:19:44.988Z",
+                "rolling_daily_apply_count": 0,
+                "rolling_daily_apply_change": -100.0,
+                "rolling_monthly_apply_count": 1,
+                "rolling_monthly_apply_change": null,
+                "rolling_apply_count_updated_at": "2022-01-08T14:03:14.243Z",
+                "rolling_daily_hire_count": 0,
+                "rolling_daily_hire_change": null,
+                "rolling_monthly_hire_count": 0,
+                "rolling_monthly_hire_change": null,
+                "rolling_hire_count_updated_at": "2022-01-08T14:05:10.654Z",
+                "average_days_to_decision": null,
+                "average_days_to_decision_updated_at": null,
+                "created_at": "2021-12-23T21:39:44.487Z",
+                "updated_at": "2022-01-08T14:05:10.768Z"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+                        "type": "organizations"
+                    }
+                },
+                "region": {
+                    "data": {
+                        "id": "abad6260-51a2-4f3e-861f-8f16f7a45532",
+                        "type": "regions"
+                    }
+                }
+            }
+        },
+        {
+            "id": "24f92970-a66a-4234-820d-c1316af773cb",
+            "type": "locations",
+            "attributes": {
+                "name": "Camelot",
+                "external_id": "",
+                "address": "3000 East 1st Avenue ",
+                "unit": null,
+                "city": "Denver",
+                "state": "CO",
+                "postal_code": "80206",
+                "phone_number": "0000000000",
+                "time_zone": "MST",
+                "latitude": 39.7169025,
+                "longitude": -104.9566822,
+                "status": "unsynchronized",
+                "organization_id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+                "parent_id": "c40f7e77-e00d-4614-af77-9ba7d5d4ef4b",
+                "location_managers_count": 1,
+                "location_managers_count_updated_at": "2021-12-21T18:42:34.466Z",
+                "rolling_daily_apply_count": 0,
+                "rolling_daily_apply_change": -100.0,
+                "rolling_monthly_apply_count": 10,
+                "rolling_monthly_apply_change": null,
+                "rolling_apply_count_updated_at": "2022-01-08T14:03:05.947Z",
+                "rolling_daily_hire_count": 0,
+                "rolling_daily_hire_change": -100.0,
+                "rolling_monthly_hire_count": 3,
+                "rolling_monthly_hire_change": null,
+                "rolling_hire_count_updated_at": "2022-01-08T14:04:56.715Z",
+                "average_days_to_decision": 4,
+                "average_days_to_decision_updated_at": "2022-01-05T21:33:29.701Z",
+                "created_at": "2021-12-21T18:41:19.409Z",
+                "updated_at": "2022-01-08T14:04:56.797Z"
+            },
+            "relationships": {
+                "organization": {
+                    "data": {
+                        "id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+                        "type": "organizations"
+                    }
+                },
+                "region": {
+                    "data": {
+                        "id": "c40f7e77-e00d-4614-af77-9ba7d5d4ef4b",
+                        "type": "regions"
+                    }
+                }
+            }
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "pages": 1
+        }
+    },
+    "links": {
+        "self": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/locations?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "next": null,
+        "prev": null,
+        "first": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/locations?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "last": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/locations?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    }
+}

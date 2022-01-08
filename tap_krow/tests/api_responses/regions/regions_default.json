@@ -1,0 +1,122 @@
+{
+  "data": [
+    {
+      "id": "a937463a-8be5-45bd-bdd2-2eb1e684959a",
+      "type": "regions",
+      "attributes": {
+        "name": "Five",
+        "external_id": "5555",
+        "status": "synchronized",
+        "locations_count": 0,
+        "locations_count_updated_at": null,
+        "region_managers_count": 2,
+        "region_managers_count_updated_at": "2021-12-29T22:15:07.377Z",
+        "rolling_daily_apply_count": null,
+        "rolling_daily_apply_change": null,
+        "rolling_monthly_apply_count": null,
+        "rolling_monthly_apply_change": null,
+        "rolling_apply_count_updated_at": null,
+        "rolling_daily_hire_count": null,
+        "rolling_daily_hire_change": null,
+        "rolling_monthly_hire_count": null,
+        "rolling_monthly_hire_change": null,
+        "rolling_hire_count_updated_at": null,
+        "average_days_to_decision": null,
+        "average_days_to_decision_updated_at": null,
+        "created_at": "2021-12-21T18:37:17.018Z",
+        "updated_at": "2021-12-29T22:15:07.383Z"
+      },
+      "relationships": {
+        "organization": {
+          "data": {
+            "id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+            "type": "organizations"
+          }
+        }
+      }
+    },
+    {
+      "id": "abad6260-51a2-4f3e-861f-8f16f7a45532",
+      "type": "regions",
+      "attributes": {
+        "name": "Two",
+        "external_id": "2222",
+        "status": "synchronized",
+        "locations_count": 1,
+        "locations_count_updated_at": "2021-12-23T21:39:44.509Z",
+        "region_managers_count": 1,
+        "region_managers_count_updated_at": "2021-12-29T22:19:04.005Z",
+        "rolling_daily_apply_count": 0,
+        "rolling_daily_apply_change": -100.0,
+        "rolling_monthly_apply_count": 1,
+        "rolling_monthly_apply_change": null,
+        "rolling_apply_count_updated_at": "2022-01-08T14:03:14.243Z",
+        "rolling_daily_hire_count": 0,
+        "rolling_daily_hire_change": null,
+        "rolling_monthly_hire_count": 0,
+        "rolling_monthly_hire_change": null,
+        "rolling_hire_count_updated_at": "2022-01-08T14:05:10.654Z",
+        "average_days_to_decision": null,
+        "average_days_to_decision_updated_at": null,
+        "created_at": "2021-12-21T18:37:00.315Z",
+        "updated_at": "2022-01-08T14:05:10.824Z"
+      },
+      "relationships": {
+        "organization": {
+          "data": {
+            "id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+            "type": "organizations"
+          }
+        }
+      }
+    },
+    {
+      "id": "c40f7e77-e00d-4614-af77-9ba7d5d4ef4b",
+      "type": "regions",
+      "attributes": {
+        "name": "One",
+        "external_id": "1111",
+        "status": "synchronized",
+        "locations_count": 1,
+        "locations_count_updated_at": "2021-12-21T18:41:19.441Z",
+        "region_managers_count": 2,
+        "region_managers_count_updated_at": "2021-12-28T21:21:50.226Z",
+        "rolling_daily_apply_count": 0,
+        "rolling_daily_apply_change": -100.0,
+        "rolling_monthly_apply_count": 10,
+        "rolling_monthly_apply_change": null,
+        "rolling_apply_count_updated_at": "2022-01-08T14:03:05.947Z",
+        "rolling_daily_hire_count": 0,
+        "rolling_daily_hire_change": -100.0,
+        "rolling_monthly_hire_count": 3,
+        "rolling_monthly_hire_change": null,
+        "rolling_hire_count_updated_at": "2022-01-08T14:04:56.715Z",
+        "average_days_to_decision": 4,
+        "average_days_to_decision_updated_at": "2022-01-05T21:33:29.712Z",
+        "created_at": "2021-12-21T18:36:41.465Z",
+        "updated_at": "2022-01-08T14:04:56.869Z"
+      },
+      "relationships": {
+        "organization": {
+          "data": {
+            "id": "98ef20ca-f889-44c6-a6d3-6e310577b637",
+            "type": "organizations"
+          }
+        }
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "total": 3,
+      "pages": 1
+    }
+  },
+  "links": {
+    "self": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/regions?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "next": null,
+    "prev": null,
+    "first": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/regions?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+    "last": "/v1/organizations/98ef20ca-f889-44c6-a6d3-6e310577b637/regions?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+  }
+}

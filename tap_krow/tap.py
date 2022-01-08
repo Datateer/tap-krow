@@ -7,6 +7,8 @@ from singer_sdk import typing as th  # JSON schema typing helpers
 
 from tap_krow.streams import ApplicantsStream, LocationsStream, OrganizationsStream, PositionsStream, RegionsStream
 
+# from tap_krow.streams.applicants import ApplicantsStream
+
 STREAM_TYPES = [ApplicantsStream, LocationsStream, OrganizationsStream, PositionsStream, RegionsStream]
 
 

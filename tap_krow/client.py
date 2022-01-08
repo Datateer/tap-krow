@@ -10,6 +10,7 @@ from typing import Any, Dict, Optional, Iterable
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
 from tap_krow.auth import krowAuthenticator
+from tap_krow.normalize import flatten_dict, remove_unnecessary_keys
 
 
 class KrowStream(RESTStream):
@@ -135,19 +136,24 @@ class KrowStream(RESTStream):
         stop_point = self.get_starting_timestamp(None)
         properties_defined_in_schema = self.schema["properties"].keys()
         for record in extract_jsonpath(self.records_jsonpath, input=response.json()):
-            flattened = {"id": record["id"], **record["attributes"]}
-            keys_to_remove = [k for k in flattened.keys() if k not in properties_defined_in_schema]
-            for k in keys_to_remove:
-                flattened.pop(k)
+            d = {"id": record["id"], **record["attributes"], **record["relationships"]}
+            # remove extraneous keys that only muddle the field names in the final output
+            d = remove_unnecessary_keys(d, ["data"])
+
+            d = flatten_dict(d)
+
+            # remove extraneous keys that are not in the stream's schema
+            keys_to_remove = [k for k in d.keys() if k not in properties_defined_in_schema]
+            d = remove_unnecessary_keys(d, keys_to_remove)
 
             # short circuit if we encounter records from earlier than our stop_point
-            if flattened["updated_at"] is None or (
-                stop_point is not None and dateutil.parser.parse(flattened["updated_at"]) < stop_point
+            if d["updated_at"] is None or (
+                stop_point is not None and dateutil.parser.parse(d["updated_at"]) < stop_point
             ):
                 logging.info(
-                    f"""This record\'s updated_at = {flattened["updated_at"]} which is less than the stop point{stop_point}.
+                    f"""This record\'s updated_at = {d["updated_at"]} which is less than the stop point{stop_point}.
                     Will not return any more records, because they were synced earlier"""
                 )
                 return
 
-            yield flattened
+            yield d
