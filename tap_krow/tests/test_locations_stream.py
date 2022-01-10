@@ -25,7 +25,7 @@ def test_locations_stream_correctly_parses_fields(responses, stream, get_parsed_
     assert "name" in res[0]
     assert "parent_id" in res[0]
     assert "postal_code" in res[0]
-    assert "region.id" in res[0]
+    assert "region_id" in res[0]
     assert "rolling_apply_count_updated_at" in res[0]
     assert "rolling_daily_apply_change" in res[0]
     assert "rolling_daily_apply_count" in res[0]

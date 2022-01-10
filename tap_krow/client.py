@@ -10,7 +10,7 @@ from typing import Any, Dict, Optional, Iterable
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
 from tap_krow.auth import krowAuthenticator
-from tap_krow.normalize import flatten_dict, remove_unnecessary_keys
+from tap_krow.normalize import flatten_dict, remove_unnecessary_keys, make_fields_meltano_select_compatible
 
 
 class KrowStream(RESTStream):
@@ -137,6 +137,8 @@ class KrowStream(RESTStream):
         properties_defined_in_schema = self.schema["properties"].keys()
         for record in extract_jsonpath(self.records_jsonpath, input=response.json()):
             d = {"id": record["id"], **record["attributes"], **record["relationships"]}
+            d = make_fields_meltano_select_compatible(d)
+
             # remove extraneous keys that only muddle the field names in the final output
             d = remove_unnecessary_keys(d, ["data"])
 

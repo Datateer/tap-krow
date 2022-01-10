@@ -49,5 +49,16 @@ def remove_unnecessary_keys(d, keys_to_remove=types.MappingProxyType({}), path="
     return res
 
 
-def flatten_dict(d, parent_key: str = "", delimiter: str = "."):
+def flatten_dict(d, parent_key: str = "", delimiter: str = "_"):
     return dict(_flatten_dict_gen(d, parent_key, delimiter))
+
+
+def make_fields_meltano_select_compatible(d):
+    res = {}
+    for k, _v in d.items():
+        cleaned_key = k.replace(".", "_")
+        if isinstance(d[k], dict):
+            res[cleaned_key] = make_fields_meltano_select_compatible(d[k])
+        else:
+            res[cleaned_key] = d[k]
+    return res
