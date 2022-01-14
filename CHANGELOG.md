@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.5.0 (2022-01-14)
+### Feature
+* Version bump ([`b389fa6`](https://github.com/Datateer/tap-krow/commit/b389fa6e4eaf868acad35e73d0a3057c620101ed))
+
 ## v0.4.0 (2022-01-10)
 ### Feature
 * Fix data types and change dot notation to underscore so that it works with meltano's select syntax ([`397c26a`](https://github.com/Datateer/tap-krow/commit/397c26a31c89652de7824bf6ea751a407cb68b32))

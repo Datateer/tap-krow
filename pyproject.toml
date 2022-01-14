@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tap-krow"
-version = "0.4.0"
+version = "0.5.0"
 description = "`tap-krow` is a Singer tap for the KROW API, built with the Meltano SDK for Singer Taps."
 authors = ["Datateer"]
 license = "Apache 2.0"
