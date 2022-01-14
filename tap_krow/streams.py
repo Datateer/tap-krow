@@ -2,7 +2,6 @@
 from typing import Optional
 
 from singer_sdk.typing import (
-    BooleanType,
     DateTimeType,
     NumberType,
     PropertiesList,
@@ -23,7 +22,6 @@ class OrganizationsStream(KrowStream):
         Property("average_days_to_decision_updated_at", StringType),
         Property("description", StringType),
         Property("id", StringType, required=True),
-        Property("onboarding", BooleanType),
         Property("name", StringType),
         Property("organization_members_count", NumberType),
         Property("organization_members_count_updated_at", DateTimeType),
@@ -37,7 +35,6 @@ class OrganizationsStream(KrowStream):
         Property("rolling_monthly_apply_count", NumberType),
         Property("rolling_monthly_hire_change", NumberType),
         Property("rolling_monthly_hire_count", NumberType),
-        Property("status", StringType),
         Property("updated_at", DateTimeType, required=True),
     ).to_dict()
 
@@ -138,6 +135,7 @@ class ApplicantsStream(KrowStream):
     schema = PropertiesList(
         Property("id", StringType, required=True),
         Property("action", StringType),
+        Property("created_at", DateTimeType),
         Property("first_name", StringType),
         Property("full_name", StringType),
         Property("last_name", StringType),
@@ -149,7 +147,6 @@ class ApplicantsStream(KrowStream):
         Property("state_action", StringType),
         Property("state_changed_at", DateTimeType),
         Property("state_name", StringType),
-        Property("transitioning", BooleanType),
         Property("updated_at", DateTimeType, required=True),
     ).to_dict()
 
