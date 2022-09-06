@@ -2,11 +2,14 @@
 
 from datetime import datetime
 import dateutil
+from http.client import RemoteDisconnected
 import logging
 import re
 import requests
-from typing import Any, Dict, Optional, Iterable
+from typing import Any, Dict, Optional, Iterable, Callable
 
+import backoff
+from singer_sdk.exceptions import RetriableAPIError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
 from tap_krow.auth import krowAuthenticator
@@ -37,6 +40,21 @@ class KrowStream(RESTStream):
     def authenticator(self) -> krowAuthenticator:
         """Return a new authenticator object."""
         return krowAuthenticator.create_for_stream(self)
+
+    def request_decorator(self, func: Callable) -> Callable:
+        decorator: Callable = backoff.on_exception(
+            self.backoff_wait_generator,
+            (
+                RetriableAPIError,
+                requests.exceptions.ReadTimeout,
+                requests.exceptions.ConnectionError,
+                # the KROW API will sometimes return this exception and a message "Remote end closed connection without response"
+                RemoteDisconnected,
+            ),
+            max_tries=self.backoff_max_tries,
+            on_backoff=self.backoff_handler,
+        )(func)
+        return decorator
 
     def get_next_page_url(self, response: requests.Response):
         matches = extract_jsonpath(self.next_page_url_jsonpath, response.json())
@@ -149,9 +167,7 @@ class KrowStream(RESTStream):
             d = remove_unnecessary_keys(d, keys_to_remove)
 
             # short circuit if we encounter records from earlier than our stop_point
-            if d["updated_at"] is None or (
-                stop_point is not None and dateutil.parser.parse(d["updated_at"]) < stop_point
-            ):
+            if d["updated_at"] is None or (stop_point is not None and dateutil.parser.parse(d["updated_at"]) < stop_point):
                 logging.info(
                     f"""This record\'s updated_at = {d["updated_at"]} which is less than the stop point{stop_point}.
                     Will not return any more records, because they were synced earlier"""
