@@ -24,6 +24,8 @@ from tap_krow.normalize import (
 class KrowStream(RESTStream):
     """KROW stream class."""
 
+    _counter = 0
+
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
@@ -174,6 +176,8 @@ class KrowStream(RESTStream):
         """
         # force a throttling behavior to slow down how quickly we send requests.
         # TODO: determine whether this is necessary, and if so, determine what is optimal
+        self._counter += 1
+        print(f">>>>>>>> request {self._counter}")
         milliseconds_to_pause = 1000
         print(f"Throttling requests by pausing {milliseconds_to_pause / 1000} seconds")
         time.sleep(milliseconds_to_pause / 1000)
