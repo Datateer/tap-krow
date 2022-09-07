@@ -1,7 +1,8 @@
 """REST client handling, including krowStream base class."""
 
 from datetime import datetime
-import time
+
+# import time
 import dateutil
 from http.client import RemoteDisconnected
 import logging
@@ -178,9 +179,9 @@ class KrowStream(RESTStream):
         # TODO: determine whether this is necessary, and if so, determine what is optimal
         settings.counter += 1
         print(f">>>>>>>> parsing response {settings.counter}")
-        milliseconds_to_pause = 1000
-        print(f"Throttling requests by pausing {milliseconds_to_pause / 1000} seconds")
-        time.sleep(milliseconds_to_pause / 1000)
+        # milliseconds_to_pause = 1000
+        # print(f"Throttling requests by pausing {milliseconds_to_pause / 1000} seconds")
+        # time.sleep(milliseconds_to_pause / 1000)
 
         stop_point = self.get_starting_timestamp(None)
         properties_defined_in_schema = self.schema["properties"].keys()
