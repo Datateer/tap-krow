@@ -1,16 +1,27 @@
 """REST client handling, including krowStream base class."""
 
 from datetime import datetime
+
+# import time
 import dateutil
+from http.client import RemoteDisconnected
 import logging
 import re
 import requests
-from typing import Any, Dict, Optional, Iterable
+from typing import Any, Dict, Optional, Iterable, Callable
 
+import backoff
+from singer_sdk.exceptions import RetriableAPIError
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
 from tap_krow.auth import krowAuthenticator
-from tap_krow.normalize import flatten_dict, remove_unnecessary_keys, make_fields_meltano_select_compatible
+from tap_krow.normalize import (
+    flatten_dict,
+    remove_unnecessary_keys,
+    make_fields_meltano_select_compatible,
+)
+
+import settings
 
 
 class KrowStream(RESTStream):
@@ -37,6 +48,34 @@ class KrowStream(RESTStream):
     def authenticator(self) -> krowAuthenticator:
         """Return a new authenticator object."""
         return krowAuthenticator.create_for_stream(self)
+
+    def request_decorator(self, func: Callable) -> Callable:
+        decorator: Callable = backoff.on_exception(
+            self.backoff_wait_generator,
+            (
+                RetriableAPIError,
+                requests.exceptions.ReadTimeout,
+                requests.exceptions.ConnectionError,
+                # the KROW API will sometimes return this exception and a message "Remote end closed connection without response"
+                RemoteDisconnected,
+            ),
+            max_tries=self.backoff_max_tries,
+            on_backoff=self.backoff_handler,
+        )(func)
+        return decorator
+
+    def backoff_wait_generator(self):  # -> Callable[..., Generator[int, Any, None]]:
+        """The wait generator used by the backoff decorator on request failure.
+
+        See for options:
+        https://github.com/litl/backoff/blob/master/backoff/_wait_gen.py
+
+        And see for examples: `Code Samples <../code_samples.html#custom-backoff>`_
+
+        Returns:
+            The wait generator
+        """
+        return backoff.expo(base=4, factor=2)  # type: ignore # ignore 'Returning Any'
 
     def get_next_page_url(self, response: requests.Response):
         matches = extract_jsonpath(self.next_page_url_jsonpath, response.json())
@@ -88,7 +127,10 @@ class KrowStream(RESTStream):
             if next_page_url:
                 search = re.search("page%5Bnumber%5D=(\\d+)", next_page_url)
                 if search:
-                    next_page_token = {**previous_token, "current_page": int(search.group(1))}
+                    next_page_token = {
+                        **previous_token,
+                        "current_page": int(search.group(1)),
+                    }
         else:
             logging.info(
                 f"""{previous_token["stop_point"]} is later than {earliest_timestamp}
@@ -133,6 +175,14 @@ class KrowStream(RESTStream):
         This function will also strip out records that are earlier than the stop point;
         we do not need these records, because they were synced earlier
         """
+        # force a throttling behavior to slow down how quickly we send requests.
+        # TODO: determine whether this is necessary, and if so, determine what is optimal
+        settings.counter += 1
+        print(f">>>>>>>> parsing response {settings.counter}")
+        # milliseconds_to_pause = 1000
+        # print(f"Throttling requests by pausing {milliseconds_to_pause / 1000} seconds")
+        # time.sleep(milliseconds_to_pause / 1000)
+
         stop_point = self.get_starting_timestamp(None)
         properties_defined_in_schema = self.schema["properties"].keys()
         for record in extract_jsonpath(self.records_jsonpath, input=response.json()):
@@ -149,9 +199,7 @@ class KrowStream(RESTStream):
             d = remove_unnecessary_keys(d, keys_to_remove)
 
             # short circuit if we encounter records from earlier than our stop_point
-            if d["updated_at"] is None or (
-                stop_point is not None and dateutil.parser.parse(d["updated_at"]) < stop_point
-            ):
+            if d["updated_at"] is None or (stop_point is not None and dateutil.parser.parse(d["updated_at"]) < stop_point):
                 logging.info(
                     f"""This record\'s updated_at = {d["updated_at"]} which is less than the stop point{stop_point}.
                     Will not return any more records, because they were synced earlier"""
