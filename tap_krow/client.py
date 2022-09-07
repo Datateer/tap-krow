@@ -25,7 +25,8 @@ class KrowStream(RESTStream):
     current_page_jsonpath = "$.meta."
     next_page_url_jsonpath = "$.links.next"
     # the number of records to request in each page
-    page_size = 1000
+    # warning at 1,000 records, the KROW API returned errors without any additional info. Lots of troubleshooting difficulty
+    page_size = 100
     replication_key = "updated_at"
     primary_keys = ["id"]
 
@@ -149,9 +150,7 @@ class KrowStream(RESTStream):
             d = remove_unnecessary_keys(d, keys_to_remove)
 
             # short circuit if we encounter records from earlier than our stop_point
-            if d["updated_at"] is None or (
-                stop_point is not None and dateutil.parser.parse(d["updated_at"]) < stop_point
-            ):
+            if d["updated_at"] is None or (stop_point is not None and dateutil.parser.parse(d["updated_at"]) < stop_point):
                 logging.info(
                     f"""This record\'s updated_at = {d["updated_at"]} which is less than the stop point{stop_point}.
                     Will not return any more records, because they were synced earlier"""
