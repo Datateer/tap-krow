@@ -26,7 +26,7 @@ class KrowStream(RESTStream):
     next_page_url_jsonpath = "$.links.next"
     # the number of records to request in each page
     # warning at 1,000 records, the KROW API returned errors without any additional info. Lots of troubleshooting difficulty
-    page_size = 100
+    page_size = 10
     replication_key = "updated_at"
     primary_keys = ["id"]
 
