@@ -170,7 +170,6 @@ class KrowStream(RESTStream):
             One item per (possibly processed) record in the API.
         """
         try:
-            # super().get_records(context) TODO
             for record in self.request_records(context):
                 transformed_record = self.post_process(record, context)
                 if transformed_record is None:
@@ -180,9 +179,9 @@ class KrowStream(RESTStream):
 
         except CustomerNotEnabledError as e:
             self.logger.warning(
-                "We hit the Conflict Error. "
-                "Happens when an organization does not have interviewing enabled "
-                f"{e=}"
+                f"""We hit the Conflict Error. 
+                This happens when an organization does not have interviewing enabled 
+                {e=}"""
             )
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
