@@ -179,8 +179,7 @@ class KrowStream(RESTStream):
 
         except CustomerNotEnabledError as e:
             self.logger.warning(
-                f"""We hit the Conflict Error. 
-                This happens when an organization does not have interviewing enabled 
+                f"""We hit the Conflict Error. This happens when an organization does not have interviewing enabled 
                 {e=}"""
             )
 
