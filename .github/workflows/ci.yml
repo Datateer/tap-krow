@@ -35,7 +35,7 @@ jobs:
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
-          poetry -vvv run flake8 . --count --show-source --statistics
+          poetry -vvv run flake8 --count --show-source --statistics .
       - name: Test with pytest
         run: |
           poetry run coverage run -m pytest && poetry run coverage report -m --fail-under=90
