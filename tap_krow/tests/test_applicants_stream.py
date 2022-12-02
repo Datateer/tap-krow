@@ -12,11 +12,13 @@ def stream(tap_instance):
 
 @pytest.fixture(scope="module")
 def responses(api_responses):
-    """Returns an instance of a stream, which """
+    """Returns an instance of a stream, which"""
     return api_responses["applicants"]
 
 
-def test_applicants_stream_correctly_parses_fields(responses, stream, get_parsed_records):
+def test_applicants_stream_correctly_parses_fields(
+    responses, stream, get_parsed_records
+):
     res = get_parsed_records(stream, responses["applicants_default.json"])
     assert "created_at" in res[0]
     assert "first_name" in res[0]

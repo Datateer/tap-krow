@@ -1,5 +1,9 @@
 import pytest
-from tap_krow.normalize import flatten_dict, remove_unnecessary_keys, make_fields_meltano_select_compatible
+from tap_krow.normalize import (
+    flatten_dict,
+    remove_unnecessary_keys,
+    make_fields_meltano_select_compatible,
+)
 
 
 def test_flattens_dict():
@@ -34,7 +38,8 @@ def test_errors_if_child_key_already_exists_in_parent():
 
     assert (
         str(exc_info.value)
-        == 'The key "a" already exists in the output, so cannot promote the child of key "to_be_removed"'
+        == '''The key "a" already exists in the output,
+            so cannot promote the child of key "to_be_removed"'''
     )
 
 

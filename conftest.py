@@ -26,7 +26,9 @@ def api_responses():
     for root, dirs, _files in os.walk("tap_krow/tests/api_responses"):
         for d in dirs:
             responses[d] = {}
-            response_files = [f for f in os.listdir(os.path.join(root, d)) if f.endswith(".json")]
+            response_files = [
+                f for f in os.listdir(os.path.join(root, d)) if f.endswith(".json")
+            ]
             for file in response_files:
                 with open(os.path.join(root, d, file)) as f:
                     responses[d][file] = FakeResponse(f.read())

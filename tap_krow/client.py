@@ -29,8 +29,9 @@ class KrowStream(RESTStream):
     records_jsonpath = "$.data[*]"  # "$[*]"  # Or override `parse_response`.
     current_page_jsonpath = "$.meta."
     next_page_url_jsonpath = "$.links.next"
-    # the number of records to request in each page
-    # warning at 1,000 records, the KROW API returned errors without any additional info. Lots of troubleshooting difficulty
+    # the number of records to request in each page warning at 1,000 records,
+    # the KROW API returned errors without any additional info.
+    # Lots of troubleshooting difficulty
     page_size = 100
     replication_key = "updated_at"
     primary_keys = ["id"]
@@ -63,7 +64,8 @@ class KrowStream(RESTStream):
         self, response: requests.Response, previous_token: Optional[Any]
     ) -> Optional[Any]:
         """Return a token for identifying next page or None if no more pages.
-        For KROW, the only option is to sort in descending order, so we return only if earliest time in response < stop point
+        For KROW, the only option is to sort in descending order,
+        so we return only if earliest time in response < stop point
         We use a dictionary here to keep track of the stop point and the current page,
         whereas a simpler implementation might just return the current page
         """
@@ -78,13 +80,16 @@ class KrowStream(RESTStream):
         next_page_token = None
         earliest_timestamp = self.get_earliest_timestamp_in_response(response)
 
-        # if no earliest timestamp is available, then no data was returned, and we should exit
+        # if no earliest timestamp is available, then no data was returned,
+        # and we should exit
         if earliest_timestamp is None:
             return None
 
         state = self.get_context_state(None)
-        # if stop_point is None, then no state was passed in, and we want all records
-        # if stop_point is < the earliest timestamp in the response, we want to get the next page
+        # if stop_point is None, then no state was passed in,
+        # and we want all records
+        # if stop_point is < the earliest timestamp in the response,
+        # we want to get the next page
         if (
             previous_token["stop_point"] is None
             or previous_token["stop_point"] < earliest_timestamp
@@ -95,8 +100,9 @@ class KrowStream(RESTStream):
                 state["replication_key_value"] = self.tap_start_datetime
             else:
                 logging.info(
-                    f"""{previous_token["stop_point"]} is None or is earlier than {earliest_timestamp}
-                    (the earliest timestamp in the API\'s response). Next page URL is {next_page_url}"""
+                    f"""{previous_token["stop_point"]} is None or is earlier
+                    than {earliest_timestamp} (the earliest timestamp in the API\'s
+                    response). Next page URL is {next_page_url}"""
                 )
             if next_page_url:
                 search = re.search("page%5Bnumber%5D=(\\d+)", next_page_url)
@@ -108,8 +114,8 @@ class KrowStream(RESTStream):
         else:
             logging.info(
                 f"""{previous_token["stop_point"]} is later than {earliest_timestamp}
-                (the earliest timestamp in the API\'s response).
-                Not requesting the next page, because we already have these earlier records"""
+                (the earliest timestamp in the API\'s response). Not requesting
+                the next page, because we already have these earlier records"""
             )
             state["replication_key_value"] = self.tap_start_datetime
 
@@ -121,8 +127,9 @@ class KrowStream(RESTStream):
         """Return a dictionary of values to be used in URL parameterization."""
         params: dict = {
             "page[size]": self.page_size,
-            # the minus sign indicates a descending sort. We sort on updated_at until we reach a state
-            # we have already extracted. Then we short circuit to stop paginating and stop returning records
+            # the minus sign indicates a descending sort. We sort on updated_at
+            # until we reach a state we have already extracted. Then we short
+            # circuit to stop paginating and stop returning records
             "sort": f"-{self.replication_key}",
         }
         if next_page_token:
@@ -179,12 +186,14 @@ class KrowStream(RESTStream):
 
         except CustomerNotEnabledError as e:
             self.logger.warning(
-                f"""We hit the Conflict Error. This happens when an organization does not have interviewing enabled 
+                f"""We hit the Conflict Error.
+                This happens when an organization does not have interviewing enabled
                 {e=}"""
             )
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
-        """Parse the response and return an iterator of result rows. The response is slightly nested, like this:
+        """Parse the response and return an iterator of result rows.
+        The response is slightly nested, like this:
             {
                 "id" "...",
                 "attributes": {
@@ -211,7 +220,7 @@ class KrowStream(RESTStream):
             }
             d = make_fields_meltano_select_compatible(d)
 
-            # remove extraneous keys that only muddle the field names in the final output
+            # remove extraneous keys that only muddle the field names in the output
             d = remove_unnecessary_keys(d, ["data"])
 
             d = flatten_dict(d)
@@ -228,8 +237,9 @@ class KrowStream(RESTStream):
                 and dateutil.parser.parse(d["updated_at"]) < stop_point
             ):
                 logging.info(
-                    f"""This record\'s updated_at = {d["updated_at"]} which is less than the stop point{stop_point}.
-                    Will not return any more records, because they were synced earlier"""
+                    f"""This record\'s updated_at = {d["updated_at"]} which is less than
+                    the stop point{stop_point}. Will not return any more records,
+                    because they were synced earlier"""
                 )
                 return
             yield d

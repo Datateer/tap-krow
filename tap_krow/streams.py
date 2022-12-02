@@ -39,7 +39,8 @@ class OrganizationsStream(KrowStream):
     ).to_dict()
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-        """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
+        """Return a context dictionary for the child streams.
+        Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
         return {"organization_id": record["id"]}
 
 
@@ -121,7 +122,8 @@ class RegionsStream(KrowStream):
     ignore_parent_replication_key = True
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-        """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
+        """Return a context dictionary for the child streams.
+        Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
         return {"region_id": record["id"]}
 
 
@@ -156,7 +158,8 @@ class LocationsStream(KrowStream):
     ignore_parent_replication_key = True
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-        """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
+        """Return a context dictionary for the child streams.
+        Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
         return {"location_id": record["id"]}
 
 
@@ -205,14 +208,15 @@ class RegionCalendarStream(KrowStream):
     ignore_parent_replication_key = True
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-        """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
+        """Return a context dictionary for the child streams.
+        Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
         return {"calendar_id": record["id"]}
 
     def validate_response(self, response):
         # Still catch error status codes
         if response.status_code == 404:
             msg = (
-                f"{response.status_code} Customer Does Not have Calendar in this Region: "
+                f"{response.status_code} Customer without Calendar in this Region: "
                 f"{response.reason} for url: {response.url}"
             )
             raise CustomerNotEnabledError(msg)
@@ -242,7 +246,8 @@ class LocationCalendarStream(KrowStream):
     ignore_parent_replication_key = True
 
     def get_child_context(self, record: dict, context: Optional[dict]) -> dict:
-        """Return a context dictionary for the child streams. Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
+        """Return a context dictionary for the child streams.
+        Refer to https://sdk.meltano.com/en/latest/parent_streams.html"""
         return {"calendar_id": record["id"]}
 
 
