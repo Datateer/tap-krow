@@ -33,8 +33,7 @@ def remove_unnecessary_keys(d, keys_to_remove=types.MappingProxyType({}), path="
                     )
                     if child_key in d:
                         raise Exception(
-                            f'''The key "{child_key}" already exists in the output,
-                            so cannot promote the child of key "{key}"'''
+                            f'The key "{child_key}" already exists in the output, so cannot promote the child of key "{key}"'
                         )
                     if isinstance(child_value, dict):
                         res[child_key] = remove_unnecessary_keys(

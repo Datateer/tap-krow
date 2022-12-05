@@ -38,8 +38,7 @@ def test_errors_if_child_key_already_exists_in_parent():
 
     assert (
         str(exc_info.value)
-        == '''The key "a" already exists in the output,
-            so cannot promote the child of key "to_be_removed"'''
+        == 'The key "a" already exists in the output, so cannot promote the child of key "to_be_removed"'
     )
 
 

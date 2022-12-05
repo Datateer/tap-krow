@@ -182,7 +182,6 @@ class ApplicantsStream(KrowStream):
         Property("state_action", StringType),
         Property("state_changed_at", DateTimeType),
         Property("state_name", StringType),
-        Property("transitioning", StringType),
         Property("updated_at", DateTimeType, required=True),
     ).to_dict()
 
