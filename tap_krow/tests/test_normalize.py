@@ -1,5 +1,9 @@
 import pytest
-from tap_krow.normalize import flatten_dict, remove_unnecessary_keys, make_fields_meltano_select_compatible
+from tap_krow.normalize import (
+    flatten_dict,
+    remove_unnecessary_keys,
+    make_fields_meltano_select_compatible,
+)
 
 
 def test_flattens_dict():

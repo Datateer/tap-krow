@@ -5,11 +5,33 @@ from typing import List
 from singer_sdk import Tap, Stream
 from singer_sdk import typing as th  # JSON schema typing helpers
 
-from tap_krow.streams import ApplicantsStream, LocationsStream, OrganizationsStream, PositionsStream, RegionsStream
+from tap_krow.streams import (
+    ApplicantsStream,
+    CampaignStream,
+    LocationInterviewStream,
+    RegionInterviewStream,
+    LocationCalendarStream,
+    LocationsStream,
+    OrganizationsStream,
+    PositionsStream,
+    RegionCalendarStream,
+    RegionsStream,
+)
 
 # from tap_krow.streams.applicants import ApplicantsStream
 
-STREAM_TYPES = [ApplicantsStream, LocationsStream, OrganizationsStream, PositionsStream, RegionsStream]
+STREAM_TYPES = [
+    ApplicantsStream,
+    CampaignStream,
+    LocationInterviewStream,
+    RegionInterviewStream,
+    LocationCalendarStream,
+    LocationsStream,
+    OrganizationsStream,
+    PositionsStream,
+    RegionCalendarStream,
+    RegionsStream,
+]
 
 
 class TapKrow(Tap):
