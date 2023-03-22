@@ -50,7 +50,6 @@ class CampaignStream(KrowStream):
     schema = PropertiesList(
         Property("created_at", DateTimeType, required=True),
         Property("id", StringType, required=True),
-        Property("type", StringType, required=True),
         Property("updated_at", DateTimeType, required=True),
         Property("utm_campaign", StringType),
         Property("utm_content", StringType),
@@ -214,16 +213,10 @@ class RegionCalendarStream(KrowStream):
     def validate_response(self, response):
         # Still catch error status codes
         if response.status_code == 404:
-            msg = (
-                f"{response.status_code} Customer without Calendar in this Region: "
-                f"{response.reason} for url: {response.url}"
-            )
+            msg = f"{response.status_code} Customer without Calendar in this Region: " f"{response.reason} for url: {response.url}"
             raise CustomerNotEnabledError(msg)
         if response.status_code == 409:
-            msg = (
-                f"{response.status_code} Conflict Error: "
-                f"{response.reason} for url: {response.url}"
-            )
+            msg = f"{response.status_code} Conflict Error: " f"{response.reason} for url: {response.url}"
             raise CustomerNotEnabledError(msg)
 
 

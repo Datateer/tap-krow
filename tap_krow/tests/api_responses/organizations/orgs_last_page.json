@@ -1,5 +1,9 @@
 {
-    "data": [],
+    "data": [
+        {
+            "test": 1234
+        }
+    ],
     "meta": {
         "pagination": {
             "total": 50,
