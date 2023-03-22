@@ -1,0 +1,16 @@
+{
+    "data": [],
+    "meta": {
+        "pagination": {
+            "total": 0,
+            "pages": 1
+        }
+    },
+    "links": {
+        "self": "/v1/organizations/e00af7dd-a8bb-4666-ae1a-0ed0e4e922a6/campaigns?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "next": null,
+        "prev": null,
+        "first": "/v1/organizations/e00af7dd-a8bb-4666-ae1a-0ed0e4e922a6/campaigns?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "last": "/v1/organizations/e00af7dd-a8bb-4666-ae1a-0ed0e4e922a6/campaigns?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    }
+}
