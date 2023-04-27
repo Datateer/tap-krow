@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.8.0 (2023-04-27)
+### Feature
+* Handle entities that don't have a relationships property ([`084e649`](https://github.com/Datateer/tap-krow/commit/084e64936f2989ef462e675bc0dca5a29ccd44b1))
+
 ## v0.7.0 (2023-03-22)
 ### Feature
 * Version bump ([`69e892a`](https://github.com/Datateer/tap-krow/commit/69e892a80b528707edeae805239e8bb5dd976bfd))
