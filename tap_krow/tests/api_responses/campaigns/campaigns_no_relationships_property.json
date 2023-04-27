@@ -1,0 +1,43 @@
+{
+    "data": [
+        {
+            "id": "9b2f9b64-ddb5-477b-ac24-4cf015df8c2d",
+            "type": "campaigns",
+            "attributes": {
+                "utm_source": "Advertising_Indeed_Sponsored",
+                "utm_medium": "PPC",
+                "utm_campaign": "Walmart",
+                "utm_term": null,
+                "utm_content": "Supply_Chain_and_Logistics",
+                "created_at": "2023-04-26T20:37:38.758Z",
+                "updated_at": "2023-04-26T20:40:00.866Z"
+            }
+        },
+        {
+            "id": "8ce08833-f338-4d2b-8d0c-c39f91f3bcda",
+            "type": "campaigns",
+            "attributes": {
+                "utm_source": null,
+                "utm_medium": null,
+                "utm_campaign": null,
+                "utm_term": null,
+                "utm_content": null,
+                "created_at": "2023-04-26T20:08:43.093Z",
+                "updated_at": "2023-04-26T20:10:40.229Z"
+            }
+        }
+    ],
+    "meta": {
+        "pagination": {
+            "total": 2,
+            "pages": 1
+        }
+    },
+    "links": {
+        "self": "/v1/organizations/e00af7dd-a8bb-4666-ae1a-0ed0e4e922a6/campaigns?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "next": null,
+        "prev": null,
+        "first": "/v1/organizations/e00af7dd-a8bb-4666-ae1a-0ed0e4e922a6/campaigns?page%5Bnumber%5D=1&page%5Bsize%5D=25",
+        "last": "/v1/organizations/e00af7dd-a8bb-4666-ae1a-0ed0e4e922a6/campaigns?page%5Bnumber%5D=1&page%5Bsize%5D=25"
+    }
+}

@@ -5,7 +5,7 @@ import pytest
 import pytz
 from urllib.parse import urlparse
 
-from tap_krow.streams import OrganizationsStream
+from tap_krow.streams import CampaignStream, OrganizationsStream
 
 
 @pytest.fixture(scope="module")
@@ -67,3 +67,10 @@ def test_parse_response_does_not_return_records_earlier_than_the_stop_point(resp
 
 
 # endregion
+
+def test_handles_when_entities_do_not_have_a_relationships_property(api_responses, stream_factory):
+    stream = stream_factory(CampaignStream)
+    # test with a file that contains campaign entities without a "relationship" property
+    res = stream.parse_response(api_responses["campaigns"]["campaigns_no_relationships_property.json"])
+    # the simple fact that no exception was thrown indicates that this test succeeded
+    assert next(res)['id'] == '9b2f9b64-ddb5-477b-ac24-4cf015df8c2d'

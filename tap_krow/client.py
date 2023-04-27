@@ -182,8 +182,9 @@ class KrowStream(RESTStream):
             d = {
                 "id": record["id"],
                 **record["attributes"],
-                **record["relationships"],
             }
+            if 'relationships' in record:
+                d.update(record["relationships"])
             d = make_fields_meltano_select_compatible(d)
 
             # remove extraneous keys that only muddle the field names in the output
