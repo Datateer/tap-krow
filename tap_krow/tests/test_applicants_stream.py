@@ -27,6 +27,7 @@ def test_applicants_stream_correctly_parses_fields(
     assert "locality_id" in res[0]
     assert "locality_type" in res[0]
     assert "opening_position_id" in res[0]
+    assert "retainment_id" in res[0]
     assert "state_changed_at" in res[0]
     assert "state_action" in res[0]
     assert "state_name" in res[0]
