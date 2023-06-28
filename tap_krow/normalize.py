@@ -49,7 +49,7 @@ def remove_unnecessary_keys(d, keys_to_remove=types.MappingProxyType({}), path="
                 res[key] = remove_unnecessary_keys(value, keys_to_remove, path)
             else:
                 res[key] = value
-    # run the same function for each child dict, using the output as the new value
+    # Run the same function for each child dict, using the output as the new value
     return res
 
 
