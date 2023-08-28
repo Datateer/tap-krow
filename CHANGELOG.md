@@ -2,6 +2,23 @@
 
 
 
+## v0.10.1 (2023-08-28)
+
+### Fix
+
+* fix: version bump ([`4ce0b3f`](https://github.com/Datateer/tap-krow/commit/4ce0b3f0c5330b7d50245cfeb482e37e163c3240))
+
+### Unknown
+
+* Merge pull request #77 from Datateer/sr-3598-override-applicant-url-with-v2
+
+fix: version bump ([`d2de665`](https://github.com/Datateer/tap-krow/commit/d2de665c2017b7bf19c9292e63ea37e45faae107))
+
+* Update pyproject.toml ([`a0da204`](https://github.com/Datateer/tap-krow/commit/a0da204787235339232778d6bc1e77f1d296c6ea))
+
+* Update ci.yml ([`4fc021e`](https://github.com/Datateer/tap-krow/commit/4fc021ebb54a87603fd89f02ef8c8436c98b5c54))
+
+
 ## v0.10.0 (2023-08-28)
 
 ### Feature
