@@ -165,6 +165,7 @@ class LocationsStream(KrowStream):
 class ApplicantsStream(KrowStream):
     name = "applicants"
     path = "/organizations/{organization_id}/applicants"
+    url_base = "https://api.next.krow.ai/v2"
     schema = PropertiesList(
         Property("id", StringType, required=True),
         Property("action", StringType),
