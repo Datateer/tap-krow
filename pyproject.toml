@@ -29,10 +29,8 @@ build-backend = "poetry.core.masonry.api"
 tap-krow = 'tap_krow.tap:TapKrow.cli'
 
 [tool.semantic_release]
-version_variable = [
-    # "dr_sven/__init__.py:__version__",
-    "pyproject.toml:version"
-]
+version_toml = ["pyproject.toml:tool.poetry.version",]
+
 branch = "main"
 upload_to_pypi = true
 upload_to_release = true
