@@ -2,6 +2,13 @@
 
 
 
+## v0.10.3 (2023-08-28)
+
+### Fix
+
+* fix: version bump ([`b622d54`](https://github.com/Datateer/tap-krow/commit/b622d54e959d04a3b919ea089c0519646bfaf065))
+
+
 ## v0.10.2 (2023-08-28)
 
 ### Fix
