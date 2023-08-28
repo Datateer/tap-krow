@@ -2,6 +2,13 @@
 
 
 
+## v0.10.2 (2023-08-28)
+
+### Fix
+
+* fix: configure version ([`a2ab0a8`](https://github.com/Datateer/tap-krow/commit/a2ab0a8ce47e2c8b1a15fa66522e41f2eeb69d11))
+
+
 ## v0.10.1 (2023-08-28)
 
 ### Fix
