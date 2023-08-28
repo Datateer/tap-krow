@@ -40,7 +40,7 @@ jobs:
         run: |
           poetry run coverage run -m pytest && poetry run coverage report -m --fail-under=90
 
-  Release:
+  BumpVersion:
     needs: Quality
     # https://github.community/t/how-do-i-specify-job-dependency-running-in-another-workflow/16482
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -55,5 +55,26 @@ jobs:
         with:
           # a special token in github at the organization account level
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # first must use the Datateer account token, then after first publish can generate a repo-specific token
-          pypi_token: ${{ secrets.PYPI_TOKEN }}
+  Publish:
+    needs: BumpVersion
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+    environment: pypi
+    # name: pypi
+    # url: https://pypi.org/p/tap-krow
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Build distributable package
+        run: |
+          pip install poetry
+          poetry build
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
