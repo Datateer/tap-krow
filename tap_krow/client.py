@@ -203,6 +203,14 @@ class KrowStream(RESTStream):
                 )
                 return
             yield d
+    
+    def backoff_max_tries(self) -> int:
+        """The number of attempts before giving up when retrying requests.
+
+        Returns:
+            Number of max retries.
+        """
+        return 20
 
 
 class CustomerNotEnabledError(Exception):
