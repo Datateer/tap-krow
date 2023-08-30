@@ -1,22 +1,23 @@
 """REST client handling, including krowStream base class."""
 
-from datetime import datetime
-import dateutil
 import logging
+from datetime import datetime
+from typing import Any, Dict, Iterable, Optional
 from urllib.parse import parse_qsl
-import requests
-from typing import Any, Dict, Optional, Iterable
 
-from singer_sdk.helpers.jsonpath import extract_jsonpath
-from singer_sdk.streams import RESTStream
+import dateutil
+import requests
 from singer_sdk.exceptions import FatalAPIError, RetriableAPIError
+from singer_sdk.helpers.jsonpath import extract_jsonpath
+from singer_sdk.pagination import BaseAPIPaginator, BaseHATEOASPaginator
+from singer_sdk.streams import RESTStream
+
 from tap_krow.auth import krowAuthenticator
 from tap_krow.normalize import (
     flatten_dict,
-    remove_unnecessary_keys,
     make_fields_meltano_select_compatible,
+    remove_unnecessary_keys,
 )
-from singer_sdk.pagination import BaseHATEOASPaginator, BaseAPIPaginator
 
 REPLICATION_KEY = "updated_at"
 
@@ -73,6 +74,7 @@ class KrowStream(RESTStream):
     """KROW stream class."""
 
     page_size = 100  # this is the upper limit allowed by the KROW API
+    _LOG_REQUEST_METRIC_URLS: bool = True  # Metrics include context for debugging
 
     @property
     def url_base(self) -> str:
@@ -203,6 +205,14 @@ class KrowStream(RESTStream):
                 )
                 return
             yield d
+    
+    def backoff_max_tries(self) -> int:
+        """The number of attempts before giving up when retrying requests.
+
+        Returns:
+            Number of max retries.
+        """
+        return 20
 
 
 class CustomerNotEnabledError(Exception):
